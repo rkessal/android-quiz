@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/btn_filled.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/btn_not_filled.xml" value="0.186" />
+        <entry key="app/src/main/res/drawable/btn_right_answer.xml" value="0.186" />
+        <entry key="app/src/main/res/drawable/btn_wrong_answer.xml" value="0.186" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_results.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/fragment_starting_page.xml" value="0.3140625" />
         <entry key="app/src/main/res/layout/layout_answer_button.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/layout_login.xml" value="0.18" />
         <entry key="app/src/main/res/layout/layout_question.xml" value="0.31302083333333336" />
         <entry key="app/src/main/res/layout/layout_questions_container.xml" value="0.31302083333333336" />
-        <entry key="app/src/main/res/layout/layout_welcome.xml" value="0.31302083333333336" />
+        <entry key="app/src/main/res/layout/layout_results.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/layout_welcome.xml" value="0.25" />
       </map>
     </option>
   </component>

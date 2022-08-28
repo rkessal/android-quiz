@@ -8,12 +8,13 @@
         android:id="@+id/btnAns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="30dp"
         android:text="Button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        style="@style/Button.Blue"
+        style="@style/Button.Answer"
+        android:background="@drawable/btn_not_filled"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

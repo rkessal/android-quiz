@@ -37,6 +37,7 @@ public class FragmentQuestion extends Fragment {
     private static final String TAG = "FragmentQuestion";
 
     private TextView tvQuestion;
+    private TextView tvQuestionNumber;
     private Button btnClickedAnswer;
     private Button btnConfirm;
     private LinearLayoutCompat clLayout;
@@ -50,6 +51,7 @@ public class FragmentQuestion extends Fragment {
     private int questionIndex;
     private int idClickedAnswer;
     private int score;
+    private int counter;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
@@ -58,6 +60,7 @@ public class FragmentQuestion extends Fragment {
         view = inflater.inflate(R.layout.layout_question, container, false);
 
         score = ((MainActivity)getActivity()).getScore();
+        counter = ((MainActivity)getActivity()).getCounter();
         Log.d(TAG, "onClick: score = " + score);
 
 
@@ -68,11 +71,13 @@ public class FragmentQuestion extends Fragment {
         questionListSize = ((MainActivity)getActivity()).getQuestionListSize();
 
         tvQuestion = view.findViewById(R.id.tvQuestion);
+        tvQuestionNumber = view.findViewById(R.id.tvQuestionNumber);
         btnConfirm = view.findViewById(R.id.btnConfirm);
 
         clLayout = view.findViewById(R.id.answersContainer);
 
         tvQuestion.setText(currentQuestion.getQuestion());
+        tvQuestionNumber.setText("Question " + counter + " of " + questionListSize);
         currentQuestion.getAnswers().forEach((answer -> {
             View lAnswer = getLayoutInflater().inflate(R.layout.layout_answer_button, container, false);
             Button btnAnswer = lAnswer.findViewById(R.id.btnAns);
@@ -94,12 +99,15 @@ public class FragmentQuestion extends Fragment {
                     idClickedAnswer = btnAnswer.getId();
                     buttons.forEach(button -> {
                         if (Integer.parseInt(button.getTag().toString()) == 1){
-                            button.setBackgroundColor(getResources().getColor(R.color.green));
+                            button.setBackground(getResources().getDrawable(R.drawable.btn_right_answer));
+                            button.setTextColor(getResources().getColor(R.color.greenRightAnswer));
                         } else if (button.getId() == idClickedAnswer && Integer.parseInt(button.getTag().toString()) == 0) {
-                            button.setBackgroundColor(getResources().getColor(R.color.red));
+                            button.setBackground(getResources().getDrawable(R.drawable.btn_wrong_answer));
+                            button.setTextColor(getResources().getColor(R.color.redWrongAnswer));
                         }
                         else {
-                            button.setBackgroundColor(getResources().getColor(R.color.blue));
+                            button.setBackground(getResources().getDrawable(R.drawable.btn_not_filled));
+                            button.setTextColor(getResources().getColor(R.color.mainThemeColor));
                         }
                     });
                 }
@@ -107,24 +115,22 @@ public class FragmentQuestion extends Fragment {
             clLayout.addView(lAnswer);
         }));
 
-
-
-
-
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 FragmentManager fm= ((MainActivity)getActivity()).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fm.beginTransaction();
-                fragmentTransaction.replace(R.id.flMainView, new FragmentQuestion());
-                fragmentTransaction.commit();
+                if (questionIndex >= 19) {
+                    fragmentTransaction.replace(R.id.flMainView, new FragmentResults());
+                    fragmentTransaction.commit();
+                } else {
+                    ((MainActivity)getActivity()).incCounter();
+                    fragmentTransaction.replace(R.id.flMainView, new FragmentQuestion());
+                    fragmentTransaction.commit();
+                }
             }
         });
-
-
-
-
 
         return view;
     }

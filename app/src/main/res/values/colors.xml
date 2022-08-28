@@ -10,4 +10,8 @@
     <color name="blue">#3550DC</color>
     <color name="green">#0EA614</color>
     <color name="red">#D32020</color>
+    <color name="greySecondary">#ACACAC</color>
+    <color name="mainThemeColor">#11698E</color>
+    <color name="greenRightAnswer">#16C79A</color>
+    <color name="redWrongAnswer">#FF4747</color>
 </resources>

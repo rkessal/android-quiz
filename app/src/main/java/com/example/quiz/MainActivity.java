@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int questionIndex = 0;
     private int score = 0;
+    private int counter = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public int getQuestionIndex() {
         return questionIndex;
     }
+
     public int getQuestionListSize() { return questions.size(); }
 
     public int getScore() {
@@ -74,4 +76,8 @@ public class MainActivity extends AppCompatActivity {
     public void incScore() {
         this.score++;
     }
+
+    public int getCounter() { return this.counter; }
+
+    public void incCounter() { this.counter++; }
 }
